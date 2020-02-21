@@ -1,0 +1,19 @@
+{
+  "name": "backend-project-lvl2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allkas/backend-project-lvl2.git"
+  },
+  "author": "Aleksey Karlov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allkas/backend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/allkas/backend-project-lvl2#readme"
+}
