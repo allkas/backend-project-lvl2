@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/allkas/backend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^4.1.1"
+    "commander": "^4.1.1",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
