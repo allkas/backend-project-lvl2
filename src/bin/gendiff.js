@@ -4,8 +4,8 @@ import fs from 'fs';
 
 const genDiff = (beforeJson, afterJson) => {
   const result = {};
-  const beforeContent = JSON.parse(fs.readFile(beforeJson));
-  const afterContent = JSON.parse(fs.readFile(afterJson));
+  const beforeContent = JSON.parse(fs.readFileSync(beforeJson));
+  const afterContent = JSON.parse(fs.readFileSync(afterJson));
   const keysBefore = Object.keys(beforeContent);
   const keysAfter = Object.keys(afterContent);
   for (const key of keysAfter) {
@@ -27,7 +27,6 @@ const genDiff = (beforeJson, afterJson) => {
   }
   return JSON.stringify(result);
 };
-
 program
   .version('0.1.0')
   .description('Compares two configuration files and shows a difference.')
