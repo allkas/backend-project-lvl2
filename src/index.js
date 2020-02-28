@@ -25,6 +25,9 @@ export default (beforeJson, afterJson) => {
       result[`+ ${key}`] = afterContent[key];
       result[`- ${key}`] = beforeContent[key];
     }
+    if (beforeContent[key] === afterContent[key]) {
+      result[key] = afterContent[key];
+    }
   });
   return JSON.stringify(result);
 };
