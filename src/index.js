@@ -3,8 +3,8 @@ import fs from 'fs';
 
 export default (beforeJson, afterJson) => {
   const result = {};
-  const beforeContent = JSON.parse(fs.readFileSync(beforeJson));
-  const afterContent = JSON.parse(fs.readFileSync(afterJson));
+  const beforeContent = JSON.parse(fs.readFileSync(beforeJson, 'utf-8'));
+  const afterContent = JSON.parse(fs.readFileSync(afterJson, 'utf-8'));
   const keysBefore = Object.keys(beforeContent);
   const keysAfter = Object.keys(afterContent);
   const minusFilter = keysBefore.filter((key) => !keysAfter.includes(key));

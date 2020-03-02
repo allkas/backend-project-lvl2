@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import program from 'commander';
 import genDiff from '..';
 
@@ -8,6 +9,6 @@ program
   .option('-f, --format [type]', 'output format')
   .arguments('<firstConfig> <secondConfig>')
   .action((firstConfig, secondConfig) => {
-    genDiff(firstConfig, secondConfig);
+    console.log(genDiff(firstConfig, secondConfig));
   })
   .parse(process.argv);
