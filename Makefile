@@ -10,11 +10,11 @@ start:
 lint:
 	npx eslint .
 
-test-coverage:
-	npm test -- --coverage
-
 test:
 	npm test
+
+test-coverage:
+	npm test -- --coverage
 
 test-coverage:
 	npm run test-coverage
