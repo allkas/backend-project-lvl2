@@ -1,10 +1,10 @@
-// import fs from 'fs';
+import fs from 'fs';
 // import path from 'path';
 import genDiff from '../src/index.js';
 
 
 test('check json', () => {
   const diff = genDiff('__fixtures__/before.json', '__fixtures__/after.json');
-  const expected = '{"- proxy":"123.234.53.22","- follow":false,"+ verbose":true,"+ timeout":20,"- timeout":50,"host":"hexlet.io"}';
+  const expected = fs.readFileSync('__fixtures__/expected.txt', 'utf-8');
   expect(diff).toBe(expected);
 });

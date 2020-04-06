@@ -1,33 +1,25 @@
 import fs from 'fs';
-// import has from 'lodash';
+import _ from 'lodash';
 
-export default (beforeJson, afterJson) => {
-  const result = {};
-  const beforeContent = JSON.parse(fs.readFileSync(beforeJson, 'utf-8'));
-  const afterContent = JSON.parse(fs.readFileSync(afterJson, 'utf-8'));
-  const keysBefore = Object.keys(beforeContent);
-  const keysAfter = Object.keys(afterContent);
-  const minusFilter = keysBefore.filter((key) => !keysAfter.includes(key));
-  const plusFilter = keysAfter.filter((key) => !keysBefore.includes(key));
-  const filterInvariably = keysAfter.filter((key) => keysBefore.includes(key));
-  minusFilter.forEach((key) => {
-    result[`- ${key}`] = beforeContent[key];
-  });
+const usePlusOrMinus = (key, before, after) => {
+  if (before[key] === undefined) {
+    return `  + ${key}: ${after[key]}`;
+  }
+  if (after[key] === undefined) {
+    return `  - ${key}: ${before[key]}`;
+  }
+  if (before[key] === after[key]) {
+    return `    ${key}: ${after[key]}`;
+  }
+  return `  + ${key}: ${after[key]}\n  - ${key}: ${before[key]}`;
+};
 
-
-  plusFilter.forEach((key) => {
-    result[`+ ${key}`] = afterContent[key];
-  });
-
-
-  filterInvariably.forEach((key) => {
-    if (beforeContent[key] !== afterContent[key]) {
-      result[`+ ${key}`] = afterContent[key];
-      result[`- ${key}`] = beforeContent[key];
-    }
-    if (beforeContent[key] === afterContent[key]) {
-      result[key] = afterContent[key];
-    }
-  });
-  return JSON.stringify(result);
+export default (filePathBefore, filePathAfter) => {
+  const contentBefore = JSON.parse(fs.readFileSync(filePathBefore));
+  const contentAfter = JSON.parse(fs.readFileSync(filePathAfter));
+  const keysBefore = Object.keys(contentBefore);
+  const keysAfter = Object.keys(contentAfter);
+  const arrUnion = _.union(keysBefore, keysAfter)
+    .map((e) => usePlusOrMinus(e, contentBefore, contentAfter));
+  return `{\n${arrUnion.join('\n')}\n}`;
 };
