@@ -16,5 +16,4 @@ test:
 test-coverage:
 	npm test -- --coverage
 
-test-coverage:
-	npm run test-coverage
+
