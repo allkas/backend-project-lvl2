@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1587734238948" clover="3.2.0">
-  <project timestamp="1587734238948" name="All files">
+<coverage generated="1587736452609" clover="3.2.0">
+  <project timestamp="1587736452609" name="All files">
     <metrics statements="17" coveredstatements="17" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4" elements="27" coveredelements="27" complexity="0" loc="17" ncloc="17" packages="1" files="2" classes="2"/>
     <file name="index.js" path="/Users/aleksejkarlov/Desktop/backend-project-lvl2/src/index.js">
       <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
