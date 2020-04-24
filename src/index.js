@@ -1,11 +1,14 @@
 import fs from 'fs';
 import _ from 'lodash';
+import parse from './parsers';
+// import path from 'path';
+// import yaml from 'js-yaml';
 
 const usePlusOrMinus = (key, before, after) => {
-  if (before[key] === undefined) {
+  if (!_.has(before, key)) {
     return `  + ${key}: ${after[key]}`;
   }
-  if (after[key] === undefined) {
+  if (!_.has(after, key)) {
     return `  - ${key}: ${before[key]}`;
   }
   if (before[key] === after[key]) {
@@ -15,8 +18,8 @@ const usePlusOrMinus = (key, before, after) => {
 };
 
 export default (filePathBefore, filePathAfter) => {
-  const contentBefore = JSON.parse(fs.readFileSync(filePathBefore));
-  const contentAfter = JSON.parse(fs.readFileSync(filePathAfter));
+  const contentBefore = parse(filePathBefore, fs.readFileSync(filePathBefore, 'utf-8'));
+  const contentAfter = parse(filePathAfter, fs.readFileSync(filePathAfter, 'utf-8'));
   const keysBefore = Object.keys(contentBefore);
   const keysAfter = Object.keys(contentAfter);
   const arrUnion = _.union(keysBefore, keysAfter)
