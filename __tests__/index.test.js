@@ -15,3 +15,9 @@ test('check yaml', () => {
   const expected = fs.readFileSync(getPath('expected.txt'), 'utf-8');
   expect(diff).toBe(expected);
 });
+
+test('check ini', () => {
+  const diff = genDiff(getPath('before.ini'), getPath('after.ini'));
+  const expected = fs.readFileSync(getPath('expected.txt'), 'utf-8');
+  expect(diff).toBe(expected);
+});
